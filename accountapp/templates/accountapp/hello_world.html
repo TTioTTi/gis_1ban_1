@@ -5,6 +5,11 @@
     <div style= 'margin: 2rem; text-align: center'>
         <h1>METHOD</h1>
 
+        <form action="/account/hello_world/" method="post">
+            {% csrf_token %}
+            <input type="submit" class="px-3 btn btn-info rounded-pill">
+        </form>
+
         <h3>{{ text }}</h3>
 
     </div>
