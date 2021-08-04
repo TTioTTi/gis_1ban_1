@@ -13,6 +13,12 @@
         <img src="{{ target_article.image.url }}">
         {{ target_article.content }}
     </div>
+    <div>
+        <a href="{% url 'articleapp:update' pk=target_article.pk %}"
+           class="btn btn-success rounded-pill px-5">
+            Update
+        </a>
+    </div>
 
 </div>
 
