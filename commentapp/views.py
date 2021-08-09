@@ -1,13 +1,17 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DeleteView
 
 from commentapp.forms import CommentCreationForm
 from commentapp.models import Comment
 
 
+@method_decorator(login_required, 'post')
+@method_decorator(login_required, 'get')
 class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentCreationForm
