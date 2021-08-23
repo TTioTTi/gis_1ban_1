@@ -34,9 +34,8 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
     def get_context_data(self, **kwargs):
         user = self.request.user
         project = self.object
-        subscription = Subscription.objects.filter(user=user, project=project)
-        if subscription.exists():
-            subscription = 1
+        if user.is_authenticated:
+            subscription = Subscription.objects.filter(user=user, project=project)
         else:
             subscription = None
         article_list = Article.objects.filter(project=self.object)
