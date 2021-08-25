@@ -6,6 +6,16 @@
 
     <div class="my-5">
         <h1 class="NNS_B">{{ target_article.title }}</h1>
+        <div class="my-3">
+            <a href="{% url 'likeapp:article_like' article_pk=target_article.pk %}"
+               class="material-icons"
+               style="vertical-align: middle; color: #f77">
+                favorite
+            </a>
+            <span style="vertical-align: middle;">
+                {{ target_article.like }}
+            </span>
+        </div>
         <h4>{{ target_article.writer.profile.nickname }}</h4>
         <p>{{ target_article.created_at }}</p>
     </div>
@@ -33,15 +43,14 @@
     </div>
     <hr>
 
-    <div>
-        {#   댓글   #}
+    <div class="text-center my-4">
         {% for comment in target_article.comment.all %}
             <div class="comment_box">
                 <div>
                     <span style="font-size: 1.3rem;" class="NNS_B">
                         {{ comment.writer.profile.nickname }}
                     </span>
-                    <span>{{ comment.created_at }}</span>
+                    <span>{{ comment.create_at }}</span>
                 </div>
                 <div class="my-2">
                     <p>{{ comment.content }}</p>
